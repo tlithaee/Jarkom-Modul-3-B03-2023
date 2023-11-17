@@ -72,7 +72,7 @@
   - [Result](#result-19)
 
 ## Topologi
-![image](topologi.png)
+![image](thttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/opologi.png)
 
 ## Soal 10
 Selanjutnya coba tambahkan konfigurasi autentikasi di LB dengan dengan kombinasi username: “netics” dan password: “ajkyyy”, dengan yyy merupakan kode kelompok. Terakhir simpan file “htpasswd” nya di /etc/nginx/rahasisakita/
@@ -129,8 +129,8 @@ service nginx restart
 
 ### Testing di client (Revolte)
 Jalankan `lynx www.granz.channel.B03.com`
-![Alt text](image.png)
-![Alt text](image-1.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-1.png)
 
 ## Soal 11
 Lalu buat untuk setiap request yang mengandung /its akan di proxy passing menuju halaman https://www.its.ac.id. (11) hint: (proxy_pass)
@@ -181,7 +181,7 @@ service nginx restart
 
 ### Testing di client (Revolte)
 Jalankan `lynx www.granz.channel.B03.com/its`
-![Alt text](image-2.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-2.png)
 
 ## Soal 12
 Selanjutnya LB ini hanya boleh diakses oleh client dengan IP [Prefix IP].3.69, [Prefix IP].3.70, [Prefix IP].4.167, dan [Prefix IP].4.168. (12) hint: (fixed in dulu clinetnya)
@@ -234,10 +234,10 @@ service nginx restart
 
 ### Testing di client Richter (IP 10.10.3.69)
 Jalankan `lynx www.granz.channel.B03.com/its`
-![Alt text](image-3.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-3.png)
 
 ### Testing di client Revolte (IP dinamis)
-![Alt text](image-4.png) <br />
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-4.png) <br />
 Sudah tidak bisa diakses.
 
 ## Soal 13
@@ -324,7 +324,7 @@ Lalu untuk connect ke database, jalankan command berikut sekaligus untuk melihat
 mariadb --host=10.10.2.1 --port=3306 --user=kelompokB03 --password=passwordB03 dbkelompokB03 -e "SHOW DATABASES;"
 ```
 
-![Alt text](image-5.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-5.png)
 
 
 ## Soal 14
@@ -493,11 +493,11 @@ service nginx restart
 
 ### Testing di node Worker (Frieren, Flemme, dan Fern)
 Jalankan web sebagai localhost dengan menjalankan `lynx localhost`
-![Alt text](image-6.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-6.png)
 
 ### Testing di node Worker (Frieren, Flemme, dan Fern)
 Jalankan `lynx http://10.10.4.2:8002` atau `lynx http://www.riegel.canyon.B03.com/flemme`
-![Alt text](image-7.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-7.png)
 
 
 ## Soal 15
@@ -519,7 +519,7 @@ Jalankan command di bawah untuk melihat hasil benchmark:
 ab -n 100 -c 10 -p register.json -T application/json http://10.10.4.2:8002/api/auth/register
 ```
 
-![Alt text](image-8.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-8.png)
 
 ## Soal 16
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Tambahkan response dan hasil testing pada grimoire. untuk **POST /auth/login**
@@ -540,7 +540,7 @@ Jalankan command di bawah untuk melihat hasil benchmark:
 ab -n 100 -c 10 -p login.json -T application/json http://10.10.4.2:8002/api/auth/login
 ```
 
-![Alt text](image-9.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-9.png)
 
 ## Soal 17
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Tambahkan response dan hasil testing pada grimoire. untuk **POST /auth/login**
@@ -559,7 +559,7 @@ Jalankan command di bawah untuk melihat hasil benchmark setelah didapatkan token
 ab -n 100 -c 10 -H "Authorization: Bearer $token" http://10.10.4.2:8002/api/me
 ```
 
-![Alt text](image-10.png)
+![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-10.png)
 
 ## Soal 18
 Untuk memastikan ketiganya bekerja sama secara adil untuk mengatur Riegel Channel maka implementasikan Proxy Bind pada Eisen untuk mengaitkan IP dari Frieren, Flamme, dan Fern.
@@ -588,7 +588,7 @@ Jalankan
 ```shell
 ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.B03.com/api/auth/login
 ```
-![Alt text](image-11.png)
+![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-11.png)
 
 ## Soal 19
 Untuk meningkatkan performa dari Worker, coba implementasikan PHP-FPM pada Frieren, Flamme, dan Fern. Untuk testing kinerja naikkan 
@@ -620,7 +620,7 @@ pm.max_spare_servers = 3
 pm.process_idle_timeout = 5s
 ```
 
-![Alt text](image-12.png)
+![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-12.png)
 
 lalu berikut script www.conf level kedua:
 ```shell
@@ -643,7 +643,7 @@ pm.max_spare_servers = 10
 pm.process_idle_timeout = 8s
 ```
 
-![Alt text](image-13.png)
+![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-13.png)
 
 lalu berikut script www.conf level ketiga:
 ```shell
@@ -666,7 +666,7 @@ pm.max_spare_servers = 20
 pm.process_idle_timeout = 10s
 ```
 
-![Alt text](image-14.png)
+![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-14.png)
 
 untuk analisa ketiga testing dapat di akses pada grimoire: <br />
 https://docs.google.com/document/d/14eB-HuHSTERqzkfAw5me3RXB4M3lnfnk3INkxqq9alc/edit?usp=sharing
@@ -726,4 +726,4 @@ Jalankan
 ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.B03.com/api/auth/login
 ```
 
-![Alt text](image-15.png)
+![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-15.png)
