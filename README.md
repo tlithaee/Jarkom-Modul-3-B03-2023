@@ -129,7 +129,9 @@ service nginx restart
 
 ### Testing di client (Revolte)
 Jalankan `lynx www.granz.channel.B03.com`
+
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image.png)
+
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-1.png)
 
 ## Soal 11
@@ -559,7 +561,7 @@ Jalankan command di bawah untuk melihat hasil benchmark setelah didapatkan token
 ab -n 100 -c 10 -H "Authorization: Bearer $token" http://10.10.4.2:8002/api/me
 ```
 
-![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-10.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-10.png)
 
 ## Soal 18
 Untuk memastikan ketiganya bekerja sama secara adil untuk mengatur Riegel Channel maka implementasikan Proxy Bind pada Eisen untuk mengaitkan IP dari Frieren, Flamme, dan Fern.
@@ -588,7 +590,7 @@ Jalankan
 ```shell
 ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.B03.com/api/auth/login
 ```
-![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-11.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-11.png)
 
 ## Soal 19
 Untuk meningkatkan performa dari Worker, coba implementasikan PHP-FPM pada Frieren, Flamme, dan Fern. Untuk testing kinerja naikkan 
@@ -620,7 +622,7 @@ pm.max_spare_servers = 3
 pm.process_idle_timeout = 5s
 ```
 
-![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-12.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-12.png)
 
 lalu berikut script www.conf level kedua:
 ```shell
@@ -643,7 +645,7 @@ pm.max_spare_servers = 10
 pm.process_idle_timeout = 8s
 ```
 
-![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-13.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-13.png)
 
 lalu berikut script www.conf level ketiga:
 ```shell
@@ -666,10 +668,10 @@ pm.max_spare_servers = 20
 pm.process_idle_timeout = 10s
 ```
 
-![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-14.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-14.png)
 
 untuk analisa ketiga testing dapat di akses pada grimoire: <br />
-https://docs.google.com/document/d/14eB-HuHSTERqzkfAw5me3RXB4M3lnfnk3INkxqq9alc/edit?usp=sharing
+[B03_Grimoire](https://docs.google.com/document/d/14eB-HuHSTERqzkfAw5me3RXB4M3lnfnk3INkxqq9alc/edit?usp=sharing)
 
 ## Soal 20
 Nampaknya hanya menggunakan PHP-FPM tidak cukup untuk meningkatkan performa dari worker maka implementasikan Least-Conn pada Eisen. Untuk testing kinerja dari worker tersebut dilakukan sebanyak 100 request dengan 10 request/second. (20)
@@ -726,4 +728,4 @@ Jalankan
 ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.B03.com/api/auth/login
 ```
 
-![Alt text](ihttps://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-15.png)
+![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/mage-15.png)
