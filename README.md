@@ -74,8 +74,311 @@
 ## Topologi
 ![image](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/Topologi.png)
 
+## Config 
+- **Aura (Router & DHCP relay)**
+  ```
+  # DHCP config for eth0
+  auto eth0
+  iface eth0 inet dhcp
+  up iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.10.0.0/16
+
+  # Static config for eth1
+  auto eth1
+  iface eth1 inet static
+    address 10.10.1.35
+    netmask 255.255.255.0
+
+  # Static config for eth2
+  auto eth2
+  iface eth2 inet static
+    address 10.10.2.35
+    netmask 255.255.255.0
+
+  # Static config for eth3
+  auto eth3
+  iface eth3 inet static
+    address 10.10.3.35
+    netmask 255.255.255.0
+
+  # Static config for eth4
+  auto eth4
+  iface eth4 inet static
+    address 10.10.4.35
+    netmask 255.255.255.0
+  ```
+- **Himmel (DHCP Server)**
+  ```
+  auto eth0
+  iface eth0 inet static
+    address 10.10.1.1
+    netmask 255.255.255.0
+    gateway 10.10.1.35
+  ```
+- **Heiter (DNS Server)**
+  ```
+  auto eth0
+  iface eth0 inet static
+    address 10.10.1.2
+    netmask 255.255.255.0
+    gateway 10.10.1.35
+  ```
+- **Denken (Database Server)**
+  ```
+  auto eth0
+  iface eth0 inet static
+    address 10.10.2.1
+    netmask 255.255.255.0
+    gateway 10.10.2.35
+  ```
+- **Eisen (Load Balancer)**
+  ```
+  auto eth0
+  iface eth0 inet static
+    address 10.10.2.2
+    netmask 255.255.255.0
+    gateway 10.10.2.35
+  ```
+- **Revolte (Client)**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  ```
+- **Richter (Client)**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  hwaddress ether 96:05:97:2a:29:65
+  ```
+- **Lawine (PHP Worker)**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  hwaddress ether 3a:ff:68:ce:d5:cf
+  ```
+- **Linie (PHP Worker)**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  hwaddress ether 76:a0:85:61:16:3e
+  ```
+- **Lugner (PHP Worker)**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  hwaddress ether 1e:9d:8e:94:86:46
+  ```
+- **Sein (Client)**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  ```
+- **Stark (Client)**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  ```
+- **Frieren (Laravel Worker)**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  hwaddress ether be:6a:9c:c4:ae:30
+  ```
+- **Flemme (Laravel Worker)**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  hwaddress ether c6:30:18:d2:fd:9a
+  ```
+- **Fern (Laravel Worker)**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+  hwaddress ether a2:e5:59:6d:aa:80
+  ```
+
+## Soal 1
+> Lakukan konfigurasi sesuai dengan peta yang sudah diberikan.
+
+**Di Heiter** masukkan konfigurasi domainnya
+
+- granz.channel.B03.com
+
+```
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     channel.B03.com. root.channel.B03.com. (
+                        2023131101      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@               IN      NS      granz.channel.B03.com.
+@               IN      A       10.10.3.1       ; IP fern
+www             IN      CNAME   granz.channel.B03.com.
+```
+
+- riegel.canyon.B03.com
+```
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     canyon.B03.com. root.canyon.B03.com. (
+                        2023131101      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@               IN      NS      riegel.canyon.B03.com.
+@               IN      A       10.10.4.1       ; IP lugner
+www             IN      CNAME   riegel.canyon.B03.com.
+```
+
+### Result
+Melakukan percobaan di client `Stark`
+
+![Alt text](1-9/3.png)
+
+![Alt text](1-9/3.1.png)
+
+## Soal 2
+> Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.16 - [prefix IP].3.32 dan [prefix IP].3.64 - [prefix IP].3.80
+
+Memasukkan konfigurasi kedalam `/etc/dhcp/dhcpd.conf`
+
+### Script
+
+```
+# eth1
+subnet 10.10.1.0 netmask 255.255.255.0 {
+}
+
+	# eth2
+subnet 10.10.2.0 netmask 255.255.255.0 {
+}
+
+# eth3
+subnet 10.10.3.0 netmask 255.255.255.0 {
+    range 10.10.3.16 10.10.3.32;
+    range 10.10.3.64 10.10.3.80;
+    option routers 10.10.3.35;
+    option broadcast-address 10.10.3.255;
+    option domain-name-servers 10.10.1.2;
+    default-lease-time 180;
+    max-lease-time 5760;
+}
+```
+
+## Soal 3
+> Client yang melalui Switch4 mendapatkan range IP dari [prefix IP].4.12 - [prefix IP].4.20 dan [prefix IP].4.160 - [prefix IP].4.168
+
+Memasukkan konfigurasi `eth4` kedalam `/etc/dhcp/dhcpd.conf`
+
+### Script
+
+```
+# eth1
+subnet 10.10.1.0 netmask 255.255.255.0 {
+}
+
+	# eth2
+subnet 10.10.2.0 netmask 255.255.255.0 {
+}
+
+# eth3
+subnet 10.10.3.0 netmask 255.255.255.0 {
+    range 10.10.3.16 10.10.3.32;
+    range 10.10.3.64 10.10.3.80;
+    option routers 10.10.3.35;
+    option broadcast-address 10.10.3.255;
+    option domain-name-servers 10.10.1.2;
+    default-lease-time 180;
+    max-lease-time 5760;
+}
+
+# eth4
+subnet 10.10.4.0 netmask 255.255.255.0 {
+    range 10.10.4.12 10.10.4.20;
+    range 10.10.4.160 10.10.4.168;
+    option routers 10.10.4.35;
+    option broadcast-address 10.10.4.255;
+    option domain-name-servers 10.10.1.2;
+    default-lease-time 720;
+    max-lease-time 5760;
+```
+
+## Soal 4
+> Client mendapatkan DNS dari Heiter dan dapat terhubung dengan internet melalui DNS tersebut 
+
+Memasukkan konfigurasi kedalam `/etc/dhcp/dhcpd.conf`, didalam `option broadcast-address` dan `option domain-name-servers` ditambahkan IP DNS dari Heiter.
+
+### Script
+```
+# eth3
+subnet 10.10.3.0 netmask 255.255.255.0 {
+    . . .
+    option broadcast-address 10.10.3.255;
+    option domain-name-servers 10.10.1.2;
+    . . .
+}
+
+# eth4
+subnet 10.10.4.0 netmask 255.255.255.0 {
+    . . .
+    option broadcast-address 10.10.4.255;
+    option domain-name-servers 10.10.1.2;
+    . . .
+
+```
+
+### Result
+Melakukan percobaan di client `Stark`
+
+![Alt text](1-9/3.png)
+
+![Alt text](1-9/3.1.png)
+
+## Soal 5
+> Lama waktu DHCP server meminjamkan alamat IP kepada Client yang melalui Switch3 selama 3 menit sedangkan pada client yang melalui Switch4 selama 12 menit. Dengan waktu maksimal dialokasikan untuk peminjaman alamat IP selama 96 menit
+
+Memasukkan konfigurasi kedalam `/etc/dhcp/dhcpd.conf`, didalam `default-lease-time` dan `max-lease-time` disesuaikan dengan jumlah waktu yang diinginkan oleh soal. Adapun maksimal waktu antar 2 switch adalah `96 menit = 5760s`, Peminjaman melalui switch 3 selama `3 menit = 180s` dan peminjaman melalui switch4 selama `12 menit = 720s`.
+
+### Script
+```
+# eth3
+subnet 10.10.3.0 netmask 255.255.255.0 {
+    . . .
+    default-lease-time 180;
+    max-lease-time 5760;
+}
+
+# eth4
+subnet 10.10.4.0 netmask 255.255.255.0 {
+    . . .
+    default-lease-time 720;
+    max-lease-time 5760;
+```
+
+### Result
+Melakukan percobaan di client `Stark`
+
+![Alt text](1-9/5.png)
+
+![Alt text](1-9/5.1.png)
+
+## Soal 6
+> Pada masing-masing worker PHP, lakukan konfigurasi virtual host untuk website berikut dengan menggunakan php 7.3.
+
+Memasukkan konfigurasi kedalam `/etc/dhcp/dhcpd.conf`, didalam `default-lease-time` dan `max-lease-time` disesuaikan dengan jumlah waktu yang diinginkan oleh soal. Adapun maksimal waktu antar 2 switch adalah `96 menit = 5760s`, Peminjaman melalui switch 3 selama `3 menit = 180s` dan peminjaman melalui switch4 selama `12 menit = 720s`.
+
+### Script
+
 ## Soal 10
-Selanjutnya coba tambahkan konfigurasi autentikasi di LB dengan dengan kombinasi username: “netics” dan password: “ajkyyy”, dengan yyy merupakan kode kelompok. Terakhir simpan file “htpasswd” nya di /etc/nginx/rahasisakita/
+> Selanjutnya coba tambahkan konfigurasi autentikasi di LB dengan dengan kombinasi username: “netics” dan password: “ajkyyy”, dengan yyy merupakan kode kelompok. Terakhir simpan file “htpasswd” nya di /etc/nginx/rahasisakita/
 
 **Di Eisen (Load Balancer)**, jalankan command dibawah untuk membuat direktori untk menyimpan password, serta membuat username dan password untuk kredensial.
 ```shell
