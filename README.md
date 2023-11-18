@@ -10,66 +10,65 @@
 - [Daftar Isi](#daftar-isi)
   - [Topologi](#topologi)
   - [Config](#config)
+  - [Grimoire](#grimoire)
 - [Soal 1](#Soal-1)
   - [Script](#script)
   - [Result](#result)
 - [Soal 2](#Soal-2)
   - [Script](#script-1)
-  - [Result](#result-1)
 - [Soal 3](#Soal-3)
   - [Script](#script-2)
-  - [Result](#result-2)
 - [Soal 4](#Soal-4)
   - [Script](#script-3)
-  - [Result](#result-3)
+  - [Result](#result-1)
 - [Soal 5](#Soal-5)
   - [Script](#script-4)
-  - [Result](#result-4)
+  - [Result](#result-2)
 - [Soal 6](#Soal-6)
   - [Script](#script-5)
-  - [Result](#result-5)
+  - [Result](#result-3)
 - [Soal 7](#Soal-7)
   - [Script](#script-6)
-  - [Result](#result-6)
+  - [Result](#result-4)
 - [Soal 8](#Soal-8)
   - [Script](#script-7)
-  - [Result](#result-7)
+  - [Result](#result-5)
 - [Soal 9](#Soal-9)
   - [Script](#script-8)
-  - [Result](#result-8)
+  - [Result](#result-6)
 - [Soal 10](#Soal-10)
   - [Script](#script-9)
-  - [Result](#result-9)
+  - [Result](#result-7)
 - [Soal 11](#Soal-11)
   - [Script](#script-10)
-  - [Result](#result-10)
+  - [Result](#result-8)
 - [Soal 12](#Soal-12)
   - [Script](#script-11)
-  - [Result](#result-11)
+  - [Result](#result-9)
 - [Soal 13](#Soal-13)
   - [Script](#script-12)
-  - [Result](#result-12)
+  - [Result](#result-10)
 - [Soal 14](#Soal-14)
   - [Script](#script-13)
-  - [Result](#result-13)
+  - [Result](#result-11)
 - [Soal 15](#Soal-15)
   - [Script](#script-14)
-  - [Result](#result-14)
+  - [Result](#result-12)
 - [Soal 16](#Soal-16)
   - [Script](#script-15)
-  - [Result](#result-15)
+  - [Result](#result-13)
 - [Soal 17](#Soal-17)
   - [Script](#script-16)
-  - [Result](#result-16)
+  - [Result](#result-14)
 - [Soal 18](#Soal-18)
   - [Script](#script-17)
-  - [Result](#result-17)
+  - [Result](#result-15)
 - [Soal 19](#Soal-19)
   - [Script](#script-18)
-  - [Result](#result-18)
+  - [Result](#result-16)
 - [Soal 20](#Soal-20)
   - [Script](#script-19)
-  - [Result](#result-19)
+  - [Result](#result-17)
 
 ## Topologi
 ![image](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/Topologi.png)
@@ -196,11 +195,17 @@
   hwaddress ether a2:e5:59:6d:aa:80
   ```
 
+## Grimoire
+
+Berikut adalah link grimoire kami :
+
+[B03_Grimoire - Google Dokumen](https://docs.google.com/document/d/14eB-HuHSTERqzkfAw5me3RXB4M3lnfnk3INkxqq9alc/edit?usp=sharing)
+
 ## Soal 1
 > Lakukan konfigurasi sesuai dengan peta yang sudah diberikan.
 
+### Script
 **Di Heiter** masukkan konfigurasi domainnya
-
 - granz.channel.B03.com
 
 ```
@@ -208,7 +213,7 @@
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
-@       IN      SOA     channel.B03.com. root.channel.B03.com. (
+@       IN      SOA     granz.channel.B03.com. root.granz.channel.B03.com. (
                         2023131101      ; Serial
                          604800         ; Refresh
                           86400         ; Retry
@@ -226,7 +231,7 @@ www             IN      CNAME   granz.channel.B03.com.
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
-@       IN      SOA     canyon.B03.com. root.canyon.B03.com. (
+@       IN      SOA     riegel.canyon.B03.com. root.riegel.canyon.B03.com. (
                         2023131101      ; Serial
                          604800         ; Refresh
                           86400         ; Retry
@@ -251,7 +256,6 @@ Melakukan percobaan di client `Stark`
 Memasukkan konfigurasi kedalam `/etc/dhcp/dhcpd.conf`
 
 ### Script
-
 ```
 # eth1
 subnet 10.10.1.0 netmask 255.255.255.0 {
@@ -279,7 +283,6 @@ subnet 10.10.3.0 netmask 255.255.255.0 {
 Memasukkan konfigurasi `eth4` kedalam `/etc/dhcp/dhcpd.conf`
 
 ### Script
-
 ```
 # eth1
 subnet 10.10.1.0 netmask 255.255.255.0 {
@@ -373,9 +376,493 @@ Melakukan percobaan di client `Stark`
 ## Soal 6
 > Pada masing-masing worker PHP, lakukan konfigurasi virtual host untuk website berikut dengan menggunakan php 7.3.
 
-Memasukkan konfigurasi kedalam `/etc/dhcp/dhcpd.conf`, didalam `default-lease-time` dan `max-lease-time` disesuaikan dengan jumlah waktu yang diinginkan oleh soal. Adapun maksimal waktu antar 2 switch adalah `96 menit = 5760s`, Peminjaman melalui switch 3 selama `3 menit = 180s` dan peminjaman melalui switch4 selama `12 menit = 720s`.
+Pada soal ini akan melakukan clone dari github yang diberikan soal agar dapat mengerjakan soal nomor 6. Dalam nomor 6 ini memiliki konfigurasi nginx dan lynx sehingga harus menginstall lynx terlebih dahulu lalu dijalankan di PHP worker.
 
 ### Script
+```
+service nginx start
+
+mkdir -p /var/www/granz.channel.B03.com
+
+cp granz.channel.B03.com /etc/nginx/sites-available/granz.channel.B03.com
+ln -s /etc/nginx/sites-available/granz.channel.B03.com /etc/nginx/sites-enabled/
+
+apt-get update
+apt-get install git -y
+
+git -c http.sslVerify=false clone https://github.com/bombshelll/granz.channel.B03 .com /var/www/granz.channel.B03.com
+
+rm -rf /etc/nginx/sites-enabled/default
+
+service php7.3-fpm start
+service nginx restart
+```
+
+### Result
+Masukkan `lynx 10.10.3.1`, `lynx 10.10.3.2`, `lynx 10.10.3.3` pada masing-masing PHP worker
+
+![Alt text](1-9/6.png)
+
+![Alt text](1-9/6.1.png)
+
+![Alt text](1-9/6.2.png)
+
+## Soal 7
+> Kepala suku dari Bredt Region memberikan resource server sebagai berikut:
+> - Lawine, 4GB, 2vCPU, dan 80 GB SSD.
+> - Linie, 2GB, 2vCPU, dan 50 GB SSD.
+> - Lugner 1GB, 1vCPU, dan 25 GB SSD.
+>
+>  aturlah agar Eisen dapat bekerja dengan maksimal, lalu lakukan testing dengan 1000 request dan 100 request/second.
+
+Menggunakan algoritma roundrobin pada load balancer Eisen dimana pada Heiter diarahkan IP domein ke Eisen.
+
+### Script
+**Heiter (DNS Server)**
+- no7.sh
+
+```
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     granz.channel.B03.com. root.granz.channel.B03.com. (
+                        2023131101      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@               IN      NS      granz.channel.B03.com.
+@               IN      A       10.10.2.2       ; IP Eisen
+www             IN      CNAME   granz.channel.B03.com.
+```
+
+**Eisen (Load Balancer)**
+- lb-roundrobin
+```
+upstream worker {
+    server 10.10.3.1;
+    server 10.10.3.2;
+    server 10.10.3.3;
+}
+
+server {
+    listen 80;
+    server_name granz.channel.B10.com www.granz.channel.B10.com;
+
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://worker_round_robin;
+    }
+}
+```
+- no8-roundrobin.sh
+```
+service nginx start
+
+cp lb-roundrobin /etc/nginx/sites-available/lb-granz
+rm -f /etc/nginx/sites-available/lb-granz
+ln -s /etc/nginx/sites-available/lb-granz /etc/nginx/sites-enabled/
+
+service nginx restart
+```
+
+**Revolte (Client)**
+
+Masukkan perintah berikut, `1000 req 100 req/s`
+```
+ab -n 1000 -c 100 http://www.granz.channel.B03.com/
+```
+
+### Result
+![Alt text](1-9/7.png)
+
+![Alt text](1-9/7.1.png)
+
+![Alt text](1-9/7.2.png)
+
+## Soal 8
+> Karena diminta untuk menuliskan grimoire, buatlah analisis hasil testing dengan 200 request dan 10 request/second masing-masing algoritma Load Balancer dengan ketentuan sebagai berikut:
+>
+> - Nama Algoritma Load Balancer
+> - Report hasil testing pada Apache Benchmark
+> - Grafik request per second untuk masing masing algoritma. 
+> - Analisis
+
+Menggunakan algoritma roundrobin, least-connection, IP Hash, dan Generic Hash pada load balancer Eisen dimana pada Heiter diarahkan IP domein ke Eisen.
+
+### Script
+**Heiter (DNS Server)**
+- no7.sh
+
+```
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     granz.channel.B03.com. root.granz.channel.B03.com. (
+                        2023131101      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@               IN      NS      granz.channel.B03.com.
+@               IN      A       10.10.2.2       ; IP Eisen
+www             IN      CNAME   granz.channel.B03.com.
+```
+
+**Eisen (Load Balancer)**
+- lb-roundrobin
+```
+upstream worker {
+    server 10.10.3.1;
+    server 10.10.3.2;
+    server 10.10.3.3;
+}
+
+server {
+    listen 80;
+    server_name granz.channel.B10.com www.granz.channel.B10.com;
+
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://worker_round_robin;
+    }
+}
+```
+
+- lb-leastconnection
+```
+upstream worker_least_conn {
+    server 10.10.3.1;
+    server 10.10.3.2;
+    server 10.10.3.3;
+}
+
+server {
+    listen 80;
+    server_name granz.channel.B10.com www.granz.channel.B10.com;
+
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://worker_least_conn;
+    }
+}
+```
+
+- lb-iphash
+```
+upstream worker_ip_hash {
+    server 10.10.3.1;
+    server 10.10.3.2;
+    server 10.10.3.3;
+}
+
+server {
+    listen 80;
+    server_name granz.channel.B10.com www.granz.channel.B10.com;
+
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://worker_ip_hash;
+    }
+}
+```
+
+- lb-generichash
+```
+upstream worker_generic_hash {
+    server 10.10.3.1;
+    server 10.10.3.2;
+    server 10.10.3.3;
+}
+
+server {
+    listen 80;
+    server_name granz.channel.B10.com www.granz.channel.B10.com;
+
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://worker_generic_hash;
+    }
+}
+```
+
+- no8-roundrobin.sh
+```
+service nginx start
+
+cp lb-roundrobin /etc/nginx/sites-available/lb-granz
+rm -f /etc/nginx/sites-available/lb-granz
+ln -s /etc/nginx/sites-available/lb-granz /etc/nginx/sites-enabled/
+
+service nginx restart
+```
+
+- no8-leastconnection.sh
+```
+service nginx start
+
+cp lb-leastconnection /etc/nginx/sites-available/lb-granz
+rm -f /etc/nginx/sites-available/lb-granz
+ln -s /etc/nginx/sites-available/lb-granz /etc/nginx/sites-enabled/
+
+service nginx restart
+```
+
+- no8-iphash.sh
+```
+service nginx start
+
+cp lb-iphash /etc/nginx/sites-available/lb-granz
+rm -f /etc/nginx/sites-available/lb-granz
+ln -s /etc/nginx/sites-available/lb-granz /etc/nginx/sites-enabled/
+
+service nginx restart
+```
+
+- no8-generichash.sh
+```
+service nginx start
+
+cp lb-generichash /etc/nginx/sites-available/lb-granz
+rm -f /etc/nginx/sites-available/lb-granz
+ln -s /etc/nginx/sites-available/lb-granz /etc/nginx/sites-enabled/
+
+service nginx restart
+```
+
+**Revolte (Client)**
+
+Masukkan perintah berikut, `200 req 10 req/s`
+```
+ab -n 200 -c 10 http://www.granz.channel.B03.com/
+```
+
+### Result
+- Round Robin
+
+![Alt text](1-9/8.png)
+
+![Alt text](1-9/8.1.png)
+
+![Alt text](1-9/8.2.png)
+
+- Lawine
+
+![Alt text](1-9/8rr.png)
+
+- Linie
+
+![Alt text](1-9/8rr.1.png)
+
+- Lugner
+
+![Alt text](1-9/8rr.2.png)
+
+- Least Connection
+
+![Alt text](1-9/8.3.png)
+
+![Alt text](1-9/8.4.png)
+
+![Alt text](1-9/8.5.png)
+
+- Lawine
+
+![Alt text](1-9/8lc.png)
+
+- Linie
+
+![Alt text](1-9/8lc.1.png)
+
+- Lugner
+
+![Alt text](1-9/8lc.2.png)
+
+- IP Hash
+
+![Alt text](1-9/8.6.png)
+
+![Alt text](1-9/8.7.png)
+
+![Alt text](1-9/8.8.png)
+
+- Lawine
+
+![Alt text](1-9/8ip.png)
+
+- Linie
+
+![Alt text](1-9/8ip.1.png)
+
+- Lugner
+
+![Alt text](1-9/8ip.2.png)
+
+- Generic Hash
+
+![Alt text](1-9/8.9.png)
+
+![Alt text](1-9/8.10.png)
+
+![Alt text](1-9/8.11.png)
+
+- Lawine
+
+![Alt text](1-9/8gh.png)
+
+- Linie
+
+![Alt text](1-9/8gh.1.png)
+
+- Lugner
+
+![Alt text](1-9/8gh.2.png)
+
+## Soal 9
+> Dengan menggunakan algoritma Round Robin, lakukan testing dengan menggunakan 3 worker, 2 worker, dan 1 worker sebanyak 100 request dengan 10 request/second, kemudian tambahkan grafiknya pada grimoire.
+
+Menggunakan algoritma roundrobin pada load balancer Eisen dimana pada Heiter diarahkan IP domein ke Eisen.
+
+### Script
+**Heiter (DNS Server)**
+- no7.sh
+
+```
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     granz.channel.B03.com. root.granz.channel.B03.com. (
+                        2023131101      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@               IN      NS      granz.channel.B03.com.
+@               IN      A       10.10.2.2       ; IP Eisen
+www             IN      CNAME   granz.channel.B03.com.
+```
+
+**Eisen (Load Balancer)**
+- lb-roundrobin
+```
+upstream worker {
+    server 10.10.3.1;
+    server 10.10.3.2;
+    server 10.10.3.3;
+}
+
+server {
+    listen 80;
+    server_name granz.channel.B10.com www.granz.channel.B10.com;
+
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://worker_round_robin;
+    }
+}
+```
+- no8-roundrobin.sh
+```
+service nginx start
+
+cp lb-roundrobin /etc/nginx/sites-available/lb-granz
+rm -f /etc/nginx/sites-available/lb-granz
+ln -s /etc/nginx/sites-available/lb-granz /etc/nginx/sites-enabled/
+
+service nginx restart
+```
+
+**Revolte (Client)**
+
+Masukkan perintah berikut, `100 req 10 req/s`
+```
+ab -n 1000 -c 100 http://www.granz.channel.B03.com/
+```
+
+### Result
+- 3 Worker
+
+![Alt text](1-9/9.png)
+
+![Alt text](1-9/9.1.png)
+
+![Alt text](1-9/9.2.png)
+
+- Lawine
+
+![Alt text](1-9/93w.png)
+
+- Linie
+
+![Alt text](1-9/93w.1.png)
+
+- Lugner
+
+![Alt text](1-9/93w.2.png)
+
+- 2 Worker
+
+![Alt text](1-9/9.3.png)
+
+![Alt text](1-9/9.4.png)
+
+![Alt text](1-9/9.5.png)
+
+- Lawine
+
+![Alt text](1-9/92w.png)
+
+- Linie
+
+![Alt text](1-9/92w.1.png)
+
+- 1 Worker
+
+![Alt text](1-9/9.6.png)
+
+![Alt text](1-9/9.7.png)
+
+![Alt text](1-9/9.8.png)
+
+- Lawine
+
+![Alt text](1-9/91w.png)
 
 ## Soal 10
 > Selanjutnya coba tambahkan konfigurasi autentikasi di LB dengan dengan kombinasi username: “netics” dan password: “ajkyyy”, dengan yyy merupakan kode kelompok. Terakhir simpan file “htpasswd” nya di /etc/nginx/rahasisakita/
