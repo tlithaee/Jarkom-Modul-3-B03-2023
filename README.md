@@ -250,6 +250,8 @@ Melakukan percobaan di client `Stark`
 
 ![Alt text](1-9/3.1.png)
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
+
 ## Soal 2
 > Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.16 - [prefix IP].3.32 dan [prefix IP].3.64 - [prefix IP].3.80
 
@@ -276,6 +278,8 @@ subnet 10.10.3.0 netmask 255.255.255.0 {
     max-lease-time 5760;
 }
 ```
+
+**Kendala:** Tidak ada kendala untuk nomor ini.
 
 ## Soal 3
 > Client yang melalui Switch4 mendapatkan range IP dari [prefix IP].4.12 - [prefix IP].4.20 dan [prefix IP].4.160 - [prefix IP].4.168
@@ -314,6 +318,8 @@ subnet 10.10.4.0 netmask 255.255.255.0 {
     max-lease-time 5760;
 ```
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
+
 ## Soal 4
 > Client mendapatkan DNS dari Heiter dan dapat terhubung dengan internet melalui DNS tersebut 
 
@@ -345,6 +351,8 @@ Melakukan percobaan di client `Stark`
 
 ![Alt text](1-9/3.1.png)
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
+
 ## Soal 5
 > Lama waktu DHCP server meminjamkan alamat IP kepada Client yang melalui Switch3 selama 3 menit sedangkan pada client yang melalui Switch4 selama 12 menit. Dengan waktu maksimal dialokasikan untuk peminjaman alamat IP selama 96 menit
 
@@ -372,6 +380,8 @@ Melakukan percobaan di client `Stark`
 ![Alt text](1-9/5.png)
 
 ![Alt text](1-9/5.1.png)
+
+**Kendala:** Tidak ada kendala untuk nomor ini.
 
 ## Soal 6
 > Pada masing-masing worker PHP, lakukan konfigurasi virtual host untuk website berikut dengan menggunakan php 7.3.
@@ -406,6 +416,8 @@ Masukkan `lynx 10.10.3.1`, `lynx 10.10.3.2`, `lynx 10.10.3.3` pada masing-masing
 ![Alt text](1-9/6.1.png)
 
 ![Alt text](1-9/6.2.png)
+
+**Kendala:** Tidak ada kendala untuk nomor ini.
 
 ## Soal 7
 > Kepala suku dari Bredt Region memberikan resource server sebagai berikut:
@@ -486,6 +498,8 @@ ab -n 1000 -c 100 http://www.granz.channel.B03.com/
 ![Alt text](1-9/7.1.png)
 
 ![Alt text](1-9/7.2.png)
+
+**Kendala:** Tidak ada kendala untuk nomor ini.
 
 ## Soal 8
 > Karena diminta untuk menuliskan grimoire, buatlah analisis hasil testing dengan 200 request dan 10 request/second masing-masing algoritma Load Balancer dengan ketentuan sebagai berikut:
@@ -747,6 +761,8 @@ ab -n 200 -c 10 http://www.granz.channel.B03.com/
 
 ![Alt text](1-9/8gh.2.png)
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
+
 ## Soal 9
 > Dengan menggunakan algoritma Round Robin, lakukan testing dengan menggunakan 3 worker, 2 worker, dan 1 worker sebanyak 100 request dengan 10 request/second, kemudian tambahkan grafiknya pada grimoire.
 
@@ -864,6 +880,8 @@ ab -n 1000 -c 100 http://www.granz.channel.B03.com/
 
 ![Alt text](1-9/91w.png)
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
+
 ## Soal 10
 > Selanjutnya coba tambahkan konfigurasi autentikasi di LB dengan dengan kombinasi username: “netics” dan password: “ajkyyy”, dengan yyy merupakan kode kelompok. Terakhir simpan file “htpasswd” nya di /etc/nginx/rahasisakita/
 
@@ -975,6 +993,8 @@ service nginx restart
 Jalankan `lynx www.granz.channel.B03.com/its`
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-2.png)
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
+
 ## Soal 12
 Selanjutnya LB ini hanya boleh diakses oleh client dengan IP [Prefix IP].3.69, [Prefix IP].3.70, [Prefix IP].4.167, dan [Prefix IP].4.168. (12) hint: (fixed in dulu clinetnya)
 
@@ -1031,6 +1051,8 @@ Jalankan `lynx www.granz.channel.B03.com/its`
 ### Testing di client Revolte (IP dinamis)
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-4.png) <br />
 Sudah tidak bisa diakses.
+
+**Kendala:** Tidak ada kendala untuk nomor ini.
 
 ## Soal 13
 Semua data yang diperlukan, diatur pada Denken dan harus dapat diakses oleh Frieren, Flamme, dan Fern.
@@ -1118,6 +1140,7 @@ mariadb --host=10.10.2.1 --port=3306 --user=kelompokB03 --password=passwordB03 d
 
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-5.png)
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
 
 ## Soal 14
 Frieren, Flamme, dan Fern memiliki Riegel Channel sesuai dengan quest guide berikut. Jangan lupa melakukan instalasi PHP8.0 dan Composer (14)
@@ -1291,6 +1314,7 @@ Jalankan web sebagai localhost dengan menjalankan `lynx localhost`
 Jalankan `lynx http://10.10.4.2:8002` atau `lynx http://www.riegel.canyon.B03.com/flemme`
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-7.png)
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
 
 ## Soal 15
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Tambahkan response dan hasil testing pada grimoire. untuk **POST /auth/register (15)**
@@ -1313,6 +1337,8 @@ ab -n 100 -c 10 -p register.json -T application/json http://10.10.4.2:8002/api/a
 
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-8.png)
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
+
 ## Soal 16
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Tambahkan response dan hasil testing pada grimoire. untuk **POST /auth/login**
 
@@ -1334,6 +1360,8 @@ ab -n 100 -c 10 -p login.json -T application/json http://10.10.4.2:8002/api/auth
 
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-9.png)
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
+
 ## Soal 17
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Tambahkan response dan hasil testing pada grimoire. untuk **POST /auth/login**
 
@@ -1352,6 +1380,8 @@ ab -n 100 -c 10 -H "Authorization: Bearer $token" http://10.10.4.2:8002/api/me
 ```
 
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-10.png)
+
+**Kendala:** Tidak ada kendala untuk nomor ini.
 
 ## Soal 18
 Untuk memastikan ketiganya bekerja sama secara adil untuk mengatur Riegel Channel maka implementasikan Proxy Bind pada Eisen untuk mengaitkan IP dari Frieren, Flamme, dan Fern.
@@ -1381,6 +1411,8 @@ Jalankan
 ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.B03.com/api/auth/login
 ```
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-11.png)
+
+**Kendala:** Tidak ada kendala untuk nomor ini.
 
 ## Soal 19
 Untuk meningkatkan performa dari Worker, coba implementasikan PHP-FPM pada Frieren, Flamme, dan Fern. Untuk testing kinerja naikkan 
@@ -1463,6 +1495,8 @@ pm.process_idle_timeout = 10s
 untuk analisa ketiga testing dapat di akses pada grimoire: <br />
 [B03_Grimoire](https://docs.google.com/document/d/14eB-HuHSTERqzkfAw5me3RXB4M3lnfnk3INkxqq9alc/edit?usp=sharing)
 
+**Kendala:** Tidak ada kendala untuk nomor ini.
+
 ## Soal 20
 Nampaknya hanya menggunakan PHP-FPM tidak cukup untuk meningkatkan performa dari worker maka implementasikan Least-Conn pada Eisen. Untuk testing kinerja dari worker tersebut dilakukan sebanyak 100 request dengan 10 request/second. (20)
 
@@ -1519,3 +1553,5 @@ ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.B03.c
 ```
 
 ![Alt text](https://github.com/tlithaee/Jarkom-Modul-3-B03-2023/raw/main/10-20/image-15.png)
+
+**Kendala:** Tidak ada kendala untuk nomor ini.
